@@ -1,28 +1,23 @@
 import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import Auth from '../../pages/Auth/Auth';
-import Error from '../../pages/Error/Error';
-import Home from '../../pages/Home/Home';
-import Private from '../../pages/Private/Private';
-// это пример как у меня было
+import { Routes, Navigate } from 'react-router-dom';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
-const AppRoute = () => {
-  const auth = true;
-  return (
+const AppRouter = () => {
+  const isAuth = false;
+
+  return isAuth ? (
     <Routes>
-      <Route path={'/auth'} element={<Auth />} />
-      <Route path={'/error'} element={<Error />} />
-      <Route path={'/'} element={<Home />} />
-        {
-          auth
-            ?
-            <>
-            <Route path={'/private'} element={<Private />} />
-            <Route path='*' element={<Navigate replace to={'/error'} />} />
-            </>
-            : <Route path='*' element={<Navigate replace to={'/auth'} />} />
-        }
-  </Routes>);
+      <PublicRoute/>
+      <PrivateRoute/>
+      <Navigate to={'/error'} />
+    </Routes>
+  ) : (
+    <Routes>
+      <PublicRoute/>
+      <Navigate to={'/auth'} />
+    </Routes>
+  );
 };
 
-export default AppRoute;
+export default AppRouter;
