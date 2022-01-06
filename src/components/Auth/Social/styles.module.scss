@@ -1,0 +1,17 @@
+/* The component style is inserted here. */
+a.social {
+  margin: 20px 0;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--theme-color);
+  height: 40px;
+  width: 40px;
+  margin: 0px 5px;
+  svg{
+    
+  }
+}
+

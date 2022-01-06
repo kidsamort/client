@@ -1,0 +1,24 @@
+/* The component style is inserted here. */
+.input{
+  background-color: var(--search-bg);
+  color: var(--theme-color);
+  box-shadow: 0 0 0 2px rgba(134, 140, 160,  0.2);
+  font-family: var(--body-font);
+  border-radius: 4px;
+	border: none;
+
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+  &::placeholder {
+    font-family: var(--body-font);
+    color: var(--inactive-color);
+    font-size: 15px;
+    font-weight: 500;
+   }
+}
+
+// .input:-webkit-autofill {
+//   -webkit-box-shadow:0 0 0 50px var(--search-bg) inset; /* Change the color to your own background color */
+//   -webkit-text-fill-color: var(--theme-color);
+// }

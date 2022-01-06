@@ -1,22 +1,40 @@
 import React from 'react';
-import { Routes, Navigate } from 'react-router-dom';
-import PrivateRoute from './PrivateRoute';
-import PublicRoute from './PublicRoute';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { privateRoutes, publicRoutes, RouteNames } from '../../router';
 
 const AppRouter = () => {
-  const isAuth = false;
+  const {isAuth} = useTypedSelector(state => state.auth);
 
   return isAuth ? (
-    <Routes>
-      <PublicRoute/>
-      <PrivateRoute/>
-      <Navigate to={'/error'} />
-    </Routes>
+    <Switch>
+      {publicRoutes.map((route) => (
+        <Route 
+        path={route.path} 
+        exact={route.exact} 
+        component={route.element} 
+        key={route.path} />
+      ))}
+      {privateRoutes.map((route) => (
+        <Route 
+        path={route.path} 
+        exact={route.exact} 
+        component={route.element} 
+        key={route.path} />
+      ))}
+      <Redirect to={RouteNames.ERROR} />
+    </Switch>
   ) : (
-    <Routes>
-      <PublicRoute/>
-      <Navigate to={'/auth'} />
-    </Routes>
+    <Switch>
+      {publicRoutes.map((route) => (
+        <Route 
+        path={route.path} 
+        exact={route.exact} 
+        component={route.element} 
+        key={route.path} />
+      ))}
+      <Redirect to={RouteNames.AUTH} />
+    </Switch>
   );
 };
 

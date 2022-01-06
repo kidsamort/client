@@ -1,0 +1,28 @@
+/* The component style is inserted here. */
+.button{
+  align-items: center;
+  justify-self: center;
+  border-radius: 20px;
+	border: 1px solid #3a6df0;
+	background-color: #3a6df0;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+  cursor: pointer;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+  &:not(.stroke):hover {
+    color: #fff;
+    background: #1e59f1;
+
+  }
+}
+
+ .stroke{
+  background-color: transparent;
+	color: rgb(16, 18, 27);
+  border: 1px solid rgb(16, 18, 27)
+
+ }
